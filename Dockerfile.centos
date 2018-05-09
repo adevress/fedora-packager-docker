@@ -1,0 +1,11 @@
+FROM fedora:latest
+
+RUN yum update -y
+RUN yum install -y git fedora-packager mock yum-utils sudo
+
+RUN useradd dude && usermod -a -G wheel dude && usermod -a -G mock dude
+
+USER dude
+
+CMD ["/bin/bash"]
+
